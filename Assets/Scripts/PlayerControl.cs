@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
+// At the time of writing this I just discovered a new way to structure and write code
+// So sadly this project which is almost finished won't have it, but the next ones will... woops
 public class PlayerControl : MonoBehaviour
 {    
     [Header("Stats & Numbers")]
@@ -99,16 +101,20 @@ public class PlayerControl : MonoBehaviour
 
     void Shockwave(InputAction.CallbackContext c)
     {
+        // Prevent spamming
         if (currentShockwaveCooldown > 0)
         {return;}
 
+        // Feedbacks
         explosionSound.Play();
         Instantiate(shockwaveParticles, transform.position + new Vector3(0,1,0), Quaternion.identity);
 
+        // Timers & Cooldowns
         currentShockwaveCooldown = shockwaveCooldown;
         isShockwaveReady = false;
         shockwaveUI.ShockwaveUsed();
 
+        // Actual Shockwave
         Collider[] hits = Physics.OverlapSphere(transform.position, shockwaveRadius, barrelMask);
         if (hits.Length != 0)
         {
@@ -132,7 +138,8 @@ public class PlayerControl : MonoBehaviour
 
     void RotateWithMovement(Vector3 currentMovement)
     {
-        // The CurrentMovement is the velocity of the rigidbody, so I need to divide with a high value because it can fluctuate from 0 to 25 (and negatives too)
+        // The currentMovement I get passed is the velocity of the rigidbody
+        // so I need to divide with a high value because it can fluctuate from 0 to 25 aproximatively (and negatives too)
         float angleX = 0;
         float angleZ = 0;
 
@@ -154,8 +161,9 @@ public class PlayerControl : MonoBehaviour
 
     public void Death()
     {
-        Debug.Log("I DED");
+        // Debug.Log("I DED");
         Instantiate(deathParticles, transform.position, Quaternion.identity);
+        explosionSound.Play();
         hsm.StopTimer();
         GameManager.isPlayerDead = true;
         Destroy(gameObject);

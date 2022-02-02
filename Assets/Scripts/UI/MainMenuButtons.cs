@@ -14,7 +14,8 @@ public class MainMenuButtons : MonoBehaviour
 
     void Start()
     {
-        if (!hasBeenSetup)
+        // Check the current scene so it doesn't do it in the Main Game scene which has no tutorial panel
+        if (!hasBeenSetup && SceneManager.GetActiveScene().buildIndex == 0)
         {ExitTutorial(); hasBeenSetup = true;}
     }
 
@@ -47,6 +48,11 @@ public class MainMenuButtons : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
 }

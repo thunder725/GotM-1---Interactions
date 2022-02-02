@@ -44,7 +44,7 @@ public class BarrelSpawner : MonoBehaviour
             // Starting at the base position and sliding from left to right in cycles with an amplitude
             // It's hard to explain but I can't use a mathf.Cos because it prevents the positon to have +=
             // Which changes the "visible speed" when the cap is met... it's weird but trust me I tested it
-            transform.position += new Vector3(movementDirection * currentMovementSpeed * Time.fixedDeltaTime, 0, 0);
+            transform.position += new Vector3(movementDirection * currentMovementSpeed * Time.deltaTime, 0, 0);
 
 
             // Old code with the cos that bugged, try it yourself you'll see the speed change when the speed meets its cap
