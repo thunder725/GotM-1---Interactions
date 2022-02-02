@@ -782,7 +782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceSPECIAL: 0
-  specialChancePerSecond: 0.07
+  specialChancePerSecond: 0.08
   slopeContainer: {fileID: 2057063757}
 --- !u!1 &277553288
 GameObject:
@@ -1323,14 +1323,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barrelPrefab: {fileID: 1902916027164353327, guid: fe1856cc9fddb8c4da9212b6e5778266, type: 3}
-  minSpawnCooldown: 0.35
+  minSpawnCooldown: 0.27
   maxSpawnCooldown: 3.5
   movementAmplitude: 26
   movementSpeed: 15
-  timerToSpeedRatio: 0.2
+  timerToSpeedRatio: 0.8
   timerToSpawnCooldownRatio: -0.1
   maxSpeed: 45
-  minMaxSpawnCooldown: 0.65
+  minMaxSpawnCooldown: 0.48
 --- !u!65 &505414680
 BoxCollider:
   m_ObjectHideFlags: 0
