@@ -11,6 +11,7 @@ public class FirePillarSpawner : MonoBehaviour
     // I got all of those using the "Position Checker" item in the scene, the best thing ever to find positions
     [SerializeField] float minX, maxX, minZ, maxZ, topOfSloppedGroundY;// for the position maths 
     [SerializeField] int numberOfPillars; 
+    [SerializeField] AudioSource fireSound;
 
     // [SerializeField] float baseTimerBetweenPillars, diminishingRatio, minCap; // The starting value between pillars, ratio for decreasing the value, and cap
     // float currentTimerBetweenPillars; // The current timer that'll decrease
@@ -48,6 +49,15 @@ public class FirePillarSpawner : MonoBehaviour
 
             Instantiate (firePillar, new Vector3(xPos, yPos, zPos), Quaternion.identity);
         }
+        StartCoroutine(firePillarSound());
+    }
+
+    IEnumerator firePillarSound()
+    {
+        // 1.5 is the startup time, I did this last minute so it's not optimized but at least it's a simple coroutine that stops itself
+        yield return new WaitForSeconds(1.5f);
+        fireSound.Play();
+        StopCoroutine(firePillarSound());
     }
 
     float findHeight(float x, float z)  // The ground is slopped so I need to find the height based on the distance Z and the angle of the slope using "SIMPLE" TRIGONOMETRY (tm)

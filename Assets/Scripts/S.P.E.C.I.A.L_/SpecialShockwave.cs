@@ -6,11 +6,13 @@ public class SpecialShockwave : MonoBehaviour
 {
     [SerializeField] float shockwaveRadius, shockwaveStrength, shockwaveRotationStrength;
     [SerializeField] LayerMask barrelMask;
+    [SerializeField] AudioSource explosionSound;
 
 
     void Start()
     {
         Destroy(gameObject, 2f);
+        explosionSound.Play();
 
         // Long live copy-pasted code!!
 

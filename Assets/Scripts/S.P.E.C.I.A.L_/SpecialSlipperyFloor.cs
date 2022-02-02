@@ -10,9 +10,11 @@ public class SpecialSlipperyFloor : MonoBehaviour
     float currentTimer;
     [SerializeField] MeshRenderer groundMeshRenderer;
     [SerializeField] Material groundSlipperyMaterial, groundDefaultMaterial;
+    [SerializeField] AudioSource iceSound;
     public void StartingSlipperySlope()
     {
         isSlippery = true;
+        iceSound.Play();
         player.EnableSlipperyGround(slipperyMovementTimer);
         groundMeshRenderer.material = groundSlipperyMaterial;
         currentTimer = slipperyMovementTimer;

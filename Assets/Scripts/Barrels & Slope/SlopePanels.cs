@@ -10,6 +10,7 @@ public class SlopePanels : MonoBehaviour
     [SerializeField] float litTimer;
     [SerializeField] MeshRenderer mr;
     [SerializeField] SpecialRoulette special;
+    [SerializeField] AudioSource yellowSpawnSound;
     float currentLitTimer;
     bool isSpecial;
 
@@ -49,6 +50,7 @@ public class SlopePanels : MonoBehaviour
         TurnOffPanel();
         isSpecial = true;
         mr.material.mainTexture = specialUnlitTexture;
+        yellowSpawnSound.Play();
     }
 
     void TurnOffPanel()

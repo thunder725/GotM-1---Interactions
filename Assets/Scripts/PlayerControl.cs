@@ -22,6 +22,8 @@ public class PlayerControl : MonoBehaviour
     PlayerControlInputs inputs;
     [SerializeField] LayerMask barrelMask;
     [SerializeField] HighScoreManager hsm;
+        [SerializeField] AudioSource explosionSound;
+
 
     Rigidbody rb;
 
@@ -100,6 +102,7 @@ public class PlayerControl : MonoBehaviour
         if (currentShockwaveCooldown > 0)
         {return;}
 
+        explosionSound.Play();
         Instantiate(shockwaveParticles, transform.position + new Vector3(0,1,0), Quaternion.identity);
 
         currentShockwaveCooldown = shockwaveCooldown;
