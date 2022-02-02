@@ -163,7 +163,6 @@ public class PlayerControl : MonoBehaviour
     {
         // Debug.Log("I DED");
         Instantiate(deathParticles, transform.position, Quaternion.identity);
-        explosionSound.Play();
         hsm.StopTimer();
         GameManager.isPlayerDead = true;
         Destroy(gameObject);
